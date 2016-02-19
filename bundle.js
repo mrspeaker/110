@@ -22,7 +22,7 @@ var oneIn = function oneIn(max) {
 };
 var Minfinity = 25;
 var Unfinity = 120;
-var motivationals = ["Lose", "lose", "lost", "lost the game", "Lose", "Lose", "Nope", "loss", "sorry", "no"];
+var motivationals = ["Lose", "lose", "lost", "lost the game", "lose", "Lose", "Nope", "loss", "sorry", "no"];
 
 function scramble(el) {
   var chars = [];

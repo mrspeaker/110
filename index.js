@@ -12,7 +12,7 @@ const oneOf = max => Math.random() * max | 0;
 const oneIn = max => oneOf(max) === 1;
 const Minfinity = 25;
 const Unfinity = 120;
-const motivationals = ["Lose", "lose", "lost", "lost the game", "Lose", "Lose", "Nope", "loss", "sorry", "no"];
+const motivationals = ["Lose", "lose", "lost", "lost the game", "lose", "Lose", "Nope", "loss", "sorry", "no"];
 
 function scramble (el) {
   const chars = [];
