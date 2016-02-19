@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>110%</title>
+    <style>
+      body {
+        background-color: #C0C0C0;
+        font-family: monospace;
+      }
+      button {
+        border: 1px solid #999;
+        font-family: monospace;
+        padding: 2px 4px;
+      }
+      h1 {
+        display: none;
+      }
+
+      @keyframes pulse-anim {
+        0% {background-color: #45CEEF;}
+        25% {background-color: #FFF5A5;}
+        50% {background-color: #FFD4DA;}
+        75% {background-color: #99D2E4;}
+        100% {background-color: #D8CAB4;}
+      }
+
+      @keyframes flash-anim {
+        from { background: rgba(255, 0, 0, 0.7); }
+        to   { background: default; }
+      }
+
+      .flash {
+        animation-name: flash-anim;
+        animation-duration: 0.2s;
+      }
+
+      .pulse {
+        animation: pulse-anim 40s infinite alternate;
+      }
+      #container {
+        position: relative;
+        width: 250px;
+        margin: 10em auto;
+        border-radius: 4px;
+      }
+      #btn {
+        margin-top:8px;
+        margin-left: 150px;
+      }
+      #pre1 {
+        opacity: 0.1;
+        position:absolute;
+        top:-10px;
+        left:-10px;
+        background-color: #000;
+        color: #fff;
+      }
+      #msg {
+        height: 1em;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>110%</h1>
+    <div id="container">
+      <pre id="pre1">░▓▒░▒▒▓▒▒▓▒▓░▒▓░▒░▒░▒░▓░▓░
+Sta•tis•tic•al•ly,
+      there is a
+100% chance of losing the game.
+▒░▒▓▓▒▓▓▓▓▒▒▓▒▓░▒░▒▓▒▓▓▓▓░</pre>
+      <pre id="pre2">░▓▒░▒▒▓▒▒▓▒▓░▒▓░▒░▒░▒░▓░▓░
+Sta•tis•tic•al•ly,
+      there is a
+100% chance of losing the game.
+▒░▒▓▓▒▓▓▓▓▒▒▓▒▓░▒░▒▓▒▓▓▓▓░</pre>
+      <div id="msg">░<span id="outcome"> Try your luck </span>░</div>
+
+      <button id="btn">Play</button>
+      <div id="tries"></div>
+    </div>
+    <script src="bundle.js" charset="utf-8"></script>
+  </body>
+</html>
