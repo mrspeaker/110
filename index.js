@@ -2,17 +2,17 @@ const btn = document.querySelector("#btn");
 const outcome = document.querySelector("#outcome");
 const trybox = document.querySelector("#tries");
 const werds = document.querySelector("#pre2");
-const motivationals = ["Lose", "lose", "lost", "lost the game", "Lose", "Lose", "Nope", "Failed", "Sorry", "no"];
+const twit = document.querySelector("a");
 
 let tries = 0;
 let resetTimer;
 let animTimer;
-
-const scrambleCharOff = 500; // Math.random() < 0.5 ? 10 : 500;
-const ch = () => "&#x2" + (oneOf(20) + scrambleCharOff);
+const ch = (off = 500) => "&#x2" + (oneOf(20) + off);
 const oneOf = max => Math.random() * max | 0;
 const oneIn = max => oneOf(max) === 1;
-const Unfinity = 50;
+const Minfinity = 25;
+const Unfinity = 120;
+const motivationals = ["Lose", "lose", "lost", "lost the game", "Lose", "Lose", "Nope", "loss", "sorry", "no"];
 
 function scramble (el) {
   const chars = [];
@@ -30,12 +30,13 @@ function scramble (el) {
 }
 
 function drawTries (tries) {
-  let trystr = "";
-  for (let i = 0; i < tries; i++) {
-    trystr += oneIn(80) ? (oneIn(10) ? " " : ch()) : ".";
-    trystr += i > 0 && i % 27 === 0 ? "<br/>" : "";
-  }
-  trybox.innerHTML = trystr;
+  const trystr = Array.from(new Array(tries), (e, i) => {
+    let str = "";
+    str += oneIn(80) ? (oneIn(10) ? " " : ch()) : ".";
+    str += i > 0 && i % 27 === 0 ? "<br/>" : "";
+    return str;
+  });
+  trybox.innerHTML = trystr.join("");
 }
 
 btn.disabled = false;
@@ -49,10 +50,11 @@ btn.addEventListener("click", () => {
   setTimeout(() => {
     clearInterval(animTimer);
 
-    if (tries++ > 15 && oneIn(Unfinity)) {
+    if (tries++ > Minfinity && oneIn(Unfinity)) {
       document.body.classList.add("pulse");
       outcome.innerText = " You won the game ";
       btn.style.display = "none";
+      twit.style.display = "block";
       return;
     }
 
