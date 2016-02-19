@@ -5,15 +5,14 @@ var btn = document.querySelector("#btn");
 var outcome = document.querySelector("#outcome");
 var trybox = document.querySelector("#tries");
 var werds = document.querySelector("#pre2");
-var motivationals = ["Lose", "lose", "lost", "lost the game", "Lose", "Lose", "Nope", "Failed", "Sorry", "no"];
+var twit = document.querySelector("a");
 
 var tries = 0;
 var resetTimer = undefined;
 var animTimer = undefined;
-
-var scrambleCharOff = 500; // Math.random() < 0.5 ? 10 : 500;
 var ch = function ch() {
-  return "&#x2" + (oneOf(20) + scrambleCharOff);
+  var off = arguments.length <= 0 || arguments[0] === undefined ? 500 : arguments[0];
+  return "&#x2" + (oneOf(20) + off);
 };
 var oneOf = function oneOf(max) {
   return Math.random() * max | 0;
@@ -21,7 +20,9 @@ var oneOf = function oneOf(max) {
 var oneIn = function oneIn(max) {
   return oneOf(max) === 1;
 };
-var Unfinity = 50;
+var Minfinity = 25;
+var Unfinity = 120;
+var motivationals = ["Lose", "lose", "lost", "lost the game", "Lose", "Lose", "Nope", "loss", "sorry", "no"];
 
 function scramble(el) {
   var chars = [];
@@ -39,12 +40,13 @@ function scramble(el) {
 }
 
 function drawTries(tries) {
-  var trystr = "";
-  for (var i = 0; i < tries; i++) {
-    trystr += oneIn(80) ? oneIn(10) ? " " : ch() : ".";
-    trystr += i > 0 && i % 27 === 0 ? "<br/>" : "";
-  }
-  trybox.innerHTML = trystr;
+  var trystr = Array.from(new Array(tries), function (e, i) {
+    var str = "";
+    str += oneIn(80) ? oneIn(10) ? " " : ch() : ".";
+    str += i > 0 && i % 27 === 0 ? "<br/>" : "";
+    return str;
+  });
+  trybox.innerHTML = trystr.join("");
 }
 
 btn.disabled = false;
@@ -58,10 +60,11 @@ btn.addEventListener("click", function () {
   setTimeout(function () {
     clearInterval(animTimer);
 
-    if (tries++ > 15 && oneIn(Unfinity)) {
+    if (tries++ > Minfinity && oneIn(Unfinity)) {
       document.body.classList.add("pulse");
       outcome.innerText = " You won the game ";
       btn.style.display = "none";
+      twit.style.display = "block";
       return;
     }
 
