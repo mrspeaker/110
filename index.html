@@ -26,7 +26,7 @@
       }
 
       @keyframes flash-anim {
-        from { background: rgba(255, 0, 0, 0.7); }
+        from { background: rgba(255, 0, 0, 0.5); }
         to   { background: default; }
       }
 
@@ -70,6 +70,13 @@
       #tries {
         line-height: 1.2em;
       }
+      #failbox {
+        width: 205px;
+        height: 70px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     </style>
   </head>
   <body>
@@ -90,6 +97,7 @@ Sta•tis•tic•al•ly,
       <button id="btn">Play</button>
       <a target="_blank" href="http://twitter.com/home?status=▓░▒did%20not%20lose">T W E E T &nbsp;&nbsp;I T</a>
       <div id="tries"></div>
+      <div id="failbox"></div>
     </div>
     <script src="bundle.js" charset="utf-8"></script>
   </body>

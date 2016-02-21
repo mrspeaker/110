@@ -1,8 +1,8 @@
 const btn = document.querySelector("#btn");
 const outcome = document.querySelector("#outcome");
 const trybox = document.querySelector("#tries");
-const werds = document.querySelector("#pre2");
 const twit = document.querySelector("a");
+const failbox = document.querySelector("#failbox");
 
 let tries = 0;
 let resetTimer;
@@ -42,7 +42,7 @@ function drawTries (tries) {
 btn.disabled = false;
 btn.addEventListener("click", () => {
   btn.disabled = true;
-  werds.classList.remove("flash");
+  failbox.classList.remove("flash");
   clearTimeout(resetTimer);
 
   scramble(outcome);
@@ -62,7 +62,7 @@ btn.addEventListener("click", () => {
     outcome.innerText = " " + motivationals[Math.random() * motivationals.length | 0] + ". ";
 
     btn.disabled = false;
-    werds.classList.add("flash");
+    failbox.classList.add("flash");
     resetTimer = setTimeout(() => {
       outcome.innerText = " Try your luck ";
     }, 800);
