@@ -1,10 +1,12 @@
-const btn = document.querySelector("#btn");
-const outcome = document.querySelector("#outcome");
-const trybox = document.querySelector("#tries");
+ // var for webkit bug https://bugs.webkit.org/show_bug.cgi?id=148763
+ // fixed, but waiting to land...
+var btn = document.querySelector("#btn");
+var outcome = document.querySelector("#outcome");
+var trybox = document.querySelector("#tries");
 const twit = document.querySelector("a");
-const failbox = document.querySelector("#failbox");
+var failbox = document.querySelector("#failbox");
 
-var tries = 0; // var for webkit bug
+var tries = 0;
 let resetTimer;
 let animTimer;
 const ch = (off = 500) => "&#x2" + (oneOf(20) + off);
