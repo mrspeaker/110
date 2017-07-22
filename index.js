@@ -12,9 +12,11 @@ const oneOf = max => Math.random() * max | 0;
 const oneIn = max => oneOf(max) === 1;
 const Minfinity = 25;
 const Unfinity = 120;
-const motivationals = ["Lose", "lose", "lost", "lost the game", "Lose", "Lose", "Nope", "loss", "sorry", "no"];
+const motivationals = ["Lose", "lose", "lost", "lost the game", "Lose", "Lose",
+  "Nope", "loss", "sorry", "no"
+];
 
-function scramble (el) {
+function scramble(el) {
   const chars = [];
   animTimer = setInterval(() => {
     for (var i = 0; i < chars.length; i++) {
@@ -29,7 +31,7 @@ function scramble (el) {
   }, 1000 / 60);
 }
 
-function drawTries (tries) {
+function drawTries(tries) {
   const trystr = Array.from(new Array(tries), (e, i) => {
     let str = "";
     str += oneIn(80) ? (oneIn(10) ? " " : ch()) : ".";
@@ -59,7 +61,8 @@ btn.addEventListener("click", () => {
     }
 
     drawTries(tries);
-    outcome.innerText = " " + motivationals[Math.random() * motivationals.length | 0] + ". ";
+    outcome.innerText = " " + motivationals[Math.random() *
+      motivationals.length | 0] + ". ";
 
     btn.disabled = false;
     failbox.classList.add("flash");
