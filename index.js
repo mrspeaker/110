@@ -4,7 +4,7 @@ const trybox = document.querySelector("#tries");
 const twit = document.querySelector("a");
 const failbox = document.querySelector("#failbox");
 
-let tries = 0;
+var tries = 0; // var for webkit bug
 let resetTimer;
 let animTimer;
 const ch = (off = 500) => "&#x2" + (oneOf(20) + off);
